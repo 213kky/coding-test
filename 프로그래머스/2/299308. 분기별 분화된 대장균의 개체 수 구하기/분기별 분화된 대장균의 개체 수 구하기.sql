@@ -1,15 +1,14 @@
 SELECT
-    CONCAT(
         CASE
             WHEN (MONTH(ECOLI_DATA.DIFFERENTIATION_DATE) / 3) <= 1
-            THEN 1
+            THEN '1Q'
             WHEN (MONTH(ECOLI_DATA.DIFFERENTIATION_DATE) / 3) <= 2
-            THEN 2
+            THEN '2Q'
             WHEN (MONTH(ECOLI_DATA.DIFFERENTIATION_DATE) / 3) <= 3
-            THEN 3
-            ELSE 4
+            THEN '3Q'
+            ELSE '4Q'
         END
-          , 'Q') AS QUARTER, COUNT(ECOLI_DATA.ID) AS ECOLI_COUNT
+      AS QUARTER, COUNT(ECOLI_DATA.ID) AS ECOLI_COUNT
 FROM ECOLI_DATA 
 GROUP BY QUARTER
 ORDER BY QUARTER ASC
